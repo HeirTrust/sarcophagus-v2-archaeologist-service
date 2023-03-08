@@ -99,9 +99,12 @@ export class ArchaeologistFacetX {
   }
 
   async _run(contractCall: Function, callStatic: Function) {
+    console.log('trying _run');
     try {
+      console.log('calling callStatic');
       await callStatic();
     } catch (e) {
+      console.log('callStatic Failed');
       // Only processes error, does not terminate process
       handleRpcError(e);
     }
@@ -111,6 +114,7 @@ export class ArchaeologistFacetX {
     // Even though the transaction will not revert with meaningful error output, `handleRpcError`
     // above will have processed and logged the correct error from `callStatic`, and these logs
     // should be checked for debugging purposes.
-    return await contractCall();
+    console.log('returning contractCall');
+    return contractCall();
   }
 }

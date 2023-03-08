@@ -5,6 +5,7 @@ const INTERVAL_BETWEEN_RETRIES = 5000;
 export const wait = ms => new Promise(res => setTimeout(res, ms));
 
 export const retryFn = async (fn: Function, depth = 0) => {
+  console.log('in the retryFn');
   try {
     return await fn();
   } catch (e) {
